@@ -21,6 +21,10 @@ O valor será creditado na conta do cliente relacionado ao comercio, ou seja, o 
 ![sequence diagram](../Draws/SD_transactions.png)
 
 ### Conta
+Conta representa a ligação entre o cliente e comerciante, assim, o cliente pode ter varias contas mas apenas uma relacionando ao comercio.
+
+![conta](../Draws/customer_account_merchant.png)
+
 
 ### Chave do cliente
 O cliente pode cadastrar algumas chaves que serão a representação do cliente no momento das transações, por padrão a chave de CPF será cadastrada automaticamento no processo de onboarding. 
