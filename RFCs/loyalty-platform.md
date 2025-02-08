@@ -1,52 +1,68 @@
-# Plataforma para cartões de fidelidade
+# Plataforma de fidelidade de clientes
 
-**Closing date:** <!-- YYYY-MM-DD. Ideally allow at least 7 days -->
+**Closing date:** 2023-08-31 <!-- YYYY-MM-DD. Ideally allow at least 7 days -->
 
-**Status:** Typing <!-- proposed, accepted, rejected, superseded -->
+**Status:** Proposed <!-- proposed, accepted, rejected, superseded -->
 
 ## Resumo
-Pensando em comercios de pequeno porte e prestadores de serviços, que desejam realizar campanhas de fidelização de seus clientes, seja por meio de cashback ou pontuação. Propomos a criação de uma plataforma web e aplicativo mobile para gestão de suas campanhas. Criando um ambiente organizado, de facil controle e capaz de proporcionar uma experiência única em seus clientes.
+Pensando em comércios de pequeno porte e prestadores de serviços, que desejam realizar campanhas de fidelização de seus clientes, seja por meio de cashback ou pontuação. Propomos a criação de um aplicativo mobile para gestão de suas campanhas. Criando um ambiente organizado, de fácil controle e capaz de proporcionar uma experiência única aos seus clientes.
 
 ## Motivação
-Hoje é muito comum a utilização de cartões de fidelidade, onde a cada compra ou serviço é preechido um espaço no cartão e ao completar todo o cartão, há um desconto ou bonus para o portador do cartão.
-Com isso temos uma oportunidade para proporcionar uma otíma experiencia para os clientes e melhor gestão das campanhas por parte dos comerciantes, sendo capaz de reduzir custos com gráficas pois não há necessidade de impressão dos cartões fisicos.
+Hoje é muito comum a utilização de cartões de fidelidade, onde a cada compra ou serviço é preenchido um espaço no cartão e ao completar todo, há um desconto ou bônus para o portador.
 
-## Proposta de projeto
+Com isso temos uma oportunidade para auxiliar Comerciantes que desejam oferecer uma experiencia diferenciada aos seus clientes com a criação de campanhas de cashback.
 
-O cliente ao pagar pelo serviço solicita ao vendedor o cashback, nesse momento o vendedor/prestador do serviço, realiza a transação via App Mobile, informando uma chave previamente cadastrada pelo cliente bem como o valor total da compra/serviço realizado. Assim, as transações serão processadas conforme as campanhas relacionadas ao estabelecimento e o crédito aplicado ao respectivo cliente.
+Campanhas que apenas grandes comércios tinham, podem ser facilmente implantadas nos pequenos ou até prestadores de serviço, tornando um diferencial e ainda fidelizar seus clientes.
 
-Para utilização dos créditos, o cliente gera um QRCode com o valor que deseja utilizar, na sequência o comerciante faz a leitura do QRCode confirmando a transação.
-O valor será creditado na conta do cliente relacionado ao comercio, ou seja, o cliente terá uma conta especifica por comércio que possui créditos.
+## Proposta
 
-![sequence diagram](../Draws/SD_transactions.png)
+**Loyalty** - Plataforma de fidelidade
 
-### Conta
-Conta representa a ligação entre o cliente e comerciante, assim, o cliente pode ter varias contas mas apenas uma relacionando ao comercio.
+**Comerciante/Vendedor/Prestador de Serviço** - Usuário da plataforma que Vende ou Presta serviços ao clientes.
 
-![conta](../Draws/customer_account_merchant.png)
+**Cliente** - Usuário da plataforma que toma o serviço ou realiza a compra.
 
+Durante o cadastro do cliente no App é necessário informar uma chave, essa é utilizada para que o comerciante envie a transação de cashback, análogo ao PIX, cada cliente tem uma chave única e intransferível, hoje consideramos apenas o CPF.
 
-### Chave do cliente
-O cliente pode cadastrar algumas chaves que serão a representação do cliente no momento das transações, por padrão a chave de CPF será cadastrada automaticamento no processo de onboarding. 
+O Comerciante após finalizar seu cadastro no App, pode criar suas campanhas, que podem ser do tipo Cashback ou Pontos.
+- Cashback: Percentagem do valor da compra é inserido na conta fidelidade do cliente.
+- Pontos: 1 ponto equivale a X Reais, Ex. 1 ponto para R$10, ao realizar uma compra de R$100 recebe na conta fidelidade 10 pontos.
 
-### Transação
-Nesse primeiro momento as transações deverão ocorrer apenas no sentido de Comercio para Cliente.
-Deverão conter os dados do Comercio, Cliente e Valor total.
+#### Como ganhar Cashback/Pontos
+1. O Cliente paga a compra normalmente, dinheiro, transferência PIX etc...
+2. Solicita ao Comerciante seu Cashback/Pontos
+3. O Comerciante realiza uma transação no App informando a Chave do cliente e valor total da compra
+4. Cliente visualiza o Cashback/Pontos na sua conta fidelidade
 
-### Campanhas
-O comerciante realiza o cadastro de suas campanhas que podem ser por pontos ou cashback e a data de expiração.
+Os valores em crédito são calculados conforme as campanhas cadastradas e ativas pelo Comerciante.
 
-##### Pontos
-A cada compra ou valor estipulado o cliente receberá um ponto. Ao completar uma quantia X de pontos o cliente terá sua recompença, estipulada pelo comerciante no momento do cadastro da campanha.
+#### Como utilizar os Créditos
+1. O Cliente acessa sua conta fidelidade no App
+2. Escolhe o valor que deseja utilizar 
+3. Gera o Voucher em QRCode com o valor escolhido
+4. O Comerciante, com o App em mãos, escaneia o QRCode
+5. Comerciante realiza o desconto no total da compra
 
-##### Cashback
-O cliente receberá em forma de crédito um percentual referente a compra realizada. Estipulada pelo comerciante.
+Obs. As transações não são financeiras e cabe ao Comerciante cumprir com o desconto conforme a campanha cadastrada.
+
+![SD_transactions](https://github.com/mauricionofre/loyalty-docs/assets/5630787/e9358044-30c8-47bc-9e49-6781c5bda788)
+
+#### Conta Fidelidade
+A conta fidelidade é a relação entre o Cliente e o Comerciante. Dessa forma um Cliente pode ter várias contas fidelidade mas terá apenas uma por Comerciante. Ex. O Cliente X, faz compras em Comercio A e Comercio B, serão exibidas duas Contas Fidelidade no seu App, Comercio A e Comercio B. 
+O Cliente é obrigado a utilizar os créditos recebidos do Comerciante no próprio comerciante, não é permitido gerar um Voucher do Comercio A para utilização no Comercio B.
+
+#### Transação
+A transação é a movimentação do cashback/pontos entre Comerciante para o Cliente no momento da compra e também entre o Cliente para com o Comerciante no momento da utilização do Voucher.
+Nesse primeiro momento consideramos apenas esses dois sentidos mas entende-se que pode haver uma evolução para transferências de Cashback/Pontos entre clientes.
 
 
 ## Evoluções
  - Permitir transações entre clientes.
  - Permitir cadastro de campanhas separadas por itens. 
    - Ex. cashback apenas para o serviço de Corte de cabelo
+ - Permitir a integração com sistemas ERP para receber a transação de forma automatica sem necessidade de ação manual.
+   - Plugado ao sistema de emissão de nota ou cupom fiscal.
 <!-- Describe your proposal, with a focus on clarity of meaning. If it helps,
      you MAY use [RFC2119-style](https://www.ietf.org/rfc/rfc2119.txt) MUST,
      SHOULD and MAY language to help clarify your intentions. -->
+
