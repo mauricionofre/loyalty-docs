@@ -1,4 +1,4 @@
-# Proposta de Documento de Discovery - CaaS (Cashback as a Service)
+# CaaS (Cashback as a Service)
 
 ## Introdução
 
