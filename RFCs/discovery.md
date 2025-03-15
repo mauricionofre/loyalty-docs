@@ -153,6 +153,7 @@ Wallet      1 --- * Transação
 Campanha    1 --- * Transação
 Transação   1 --- 1 Wallet
 ```
+[Detalhamento do Banco de Dados Relacional](./db-simple.md)
 
 ## 5. Casos de Uso Principais
 
